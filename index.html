@@ -1,194 +1,222 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		
-		<!-- CSS stylesheet -->
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		
-		<title>SINGAPORE'S LIFE "ADVENTURE"</title>
-	</head>
-	<body>
-		<!-- Game Title -->
-		<div id="title">
-			<h1>Singapore's Life "Adventure"</h1>
-		</div>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!-- set width: 100% -->
-		<div class="container-fluid">
-			<!-- 1st row = intensionally left blank for nested column-->
-			<div class="row">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-				<!-- Game board area -->
-				<div class="col-lg-8">
-					<!-- Game Board Row 1 -->
-					<div class="row">
-						<div class="col-lg-2">
-							<img id="freePark" src="img/freePark.png" alt="Free Parking" />
+	<!-- CSS stylesheet -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<title>SINGAPORE'S LIFE "ADVENTURE"</title>
+</head>
+<body class="p-3 mb-2 bg-dark text-white">
+	<!-- Game Title -->
+	<div id="title">
+		<h1>Singapore's Life "Adventure"</h1>
+	</div>
+
+	<!-- set width: 100% -->
+	<div class="container-fluid">
+		<!-- 1st row = intensionally left blank for nested column-->
+		<div class="row">
+
+			<!-- Game board area -->
+			<div class="col-8">
+				<!-- Game Board Row 1 -->
+				<div class="row border border-light">
+					<!-- <div id="row1"> -->
+						<div class="col-2">
+							<img id="freePark" src="img/freePark.png" class="rounded mx-auto d-block" alt="Free Parking" />
 						</div>
-						<div class="col-lg-1">
+						<div class="col-1">
 							<p id="marinaBay">Marina Bay</p>
 						</div>
-						<div class="col-lg-1 chance">
+						<div class="col-1 p-3 mb-2 bg-primary text-white">
 							<p id="chance3">Chance</p>
 						</div>
-						<div class="col-lg-1 payment">
-							<p id="insurance">Insurance Payment</p>
-							<p class="amt">-$100</p>
+						<div class="col-1 p-3 mb-2 bg-warning text-dark">
+							<p id="insurance">Insurance Payment<br /><span class="font-italic">-$100</span></p>
 						</div>
-						<div class="col-lg-1">
+						<div class="col-1">
 							<p id="outramPark">Outram Park</p>
 						</div>
-						<div class="col-lg-1 erp">
-							<p>ERP</p>
-							<p id="harbourFront">Harbour Front</p>
-							<p class="amt">-$50</p>
+						<div class="col-1 p-3 mb-2 bg-info text-white">
+							<p>ERP<br /><span id="harbourFront">Harbour Front</span><br /><span class="font-italic">-$50</span></p>
 						</div>
-						<div class="col-lg-1">
-							<p id="waterWorks">Water Works</p>
-							<p class="amt">-$100</p>
+						<div class="col-1 p-3 mb-2 bg-warning text-dark">
+							<p id="waterWorks">Water Works<br /><span class="font-italic">-$100</span></p>
 						</div>
-						<div class="col-lg-1 payment">
+						<div class="col-1">
 							<p id="bounaVista">Bouna Vista</p>
 						</div>
-						<div class="col-lg-1 chest">
+						<div class="col-1 p-3 mb-2 bg-success text-white">
 							<p id="comChest3">Community Chest</p>
 						</div>
-						<div class="col-lg-2">
-							<img id="goToJail" src="img/GoToJail.jpg" alt="Go To Jail" />
+						<div class="col-2">
+							<img id="goToJail" src="img/GoToJail.jpg" class="rounded mx-auto d-block"alt="Go To Jail" />
 						</div>
-					</div>
+					<!-- </div> -->
+				</div>
 
-					<!-- Game Board Row 2-4 -->
-					<div class="row">
+				<!-- Game Board Row 2-4 -->
+				<div class="row">
+					<!-- <div id="row2-4"> -->
 
 						<!-- Left Column -->
-						<div class="col-lg-2">
-							<div><p id="rafflesPlace">Raffles Place</p></div>
-							<div><p id="petrolStn">Petrol Station</p>
-								<p class="amt">-$100</p></div>
-							<div><p id="chance2">Chance</p></div>
+						<div class="col-2 border border-light">
+							<div>
+								<p id="rafflesPlace">Raffles Place</p>
+							</div>
+							<div>
+								<p class= "p-3 mb-2 bg-warning text-dark" id="petrolStn">Petrol Station<br /><span class="font-italic">-$100</span>
+								</p>
+							</div>
+							<div class = "p-3 mb-2 bg-primary text-white">
+								<p id="chance2">Chance</p>
+							</div>
 						</div>
 
 						<!-- Middle Block -->
-						<div class="col-lg-8">
-							<div id="chanceCard"><h2>Chance</h2></div>
-						</div>
-
-						<!-- Right Column -->
-						<div class="col-lg-2">
-							<div><p id="bishan">Bishan</p></div>
-							<div class="payment"><p id="creditCard">Credit Card Payment</p>
-								<p class="amt">-$150</p></div>
-							<div class="chest"><p id="comChest4">Community Chest</p></div>
-						</div>
-					</div>
-
-					<!-- Game Board Row 5-6 -->
-					<div class="row">
-
-						<!-- Left Column -->
-						<div class="col-lg-2">
-							<div><p id="cityHall">City Hall</p></div>
-							<div class="erp"><p>ERP</p>
-								<p id="dhobyGhaut">Dhoby Ghaut</p>
-								<p class="amt">-$50</p></div>
-						</div>
-
-						<!-- Middle Block -->
-						<div class="col-lg-8">
-							<p id="sg">SINGAPORE</p>
-							<p>LIFE <span id="adventure">"ADVENTURE"</span></p>
-						</div>
-
-						<!-- Right Column -->
-						<div class="col-lg-2">
-							<div><p id="woodlands">Woodlands</p></div>
-							<div class="erp"><p>ERP</p>
-								<p id="cck">Chua Chu Kang</p>
-								<p class="amt">-$50</p></div>
-						</div>
-					</div>
-
-					<!-- Game Board Row 7-9 -->
-					<div class="row">
-
-						<!-- Left Column -->
-						<div class="col-lg-2">
-							<div><p id="orchard">Orchard</p></div>
-							<div class="chest"><p id="comChest2">Community Chest</p></div>
-							<div class="payment"><p id="electrical">Electrical Company</p>
-								<p class="amt">-$100</p></div>
-						</div>
-
-						<!--Middle Block -->
-						<div class="col-lg-8">
-							<div id="comChestCard">
-								<h2>Community Chest</h2>
+						<div class="col-8">
+							<div id="chanceCard">
+								<h3>Chance</h3>
 							</div>
 						</div>
 
 						<!-- Right Column -->
-						<div class="col-lg-2">
-							<div class="chance"><p id="chance4">Chance</p></div>
-							<div><p id="jurongEast">Jurong East</p></div>
-							<div class="tax"><p id="luxury">Luxury Tax</p>
-								<p class="amt">-$350</p></div>
+						<div class="col-2 border border-light">
+							<div>
+								<p id="bishan">Bishan</p>
+							</div>
+							<div class="p-3 mb-2 bg-warning text-dark">
+								<p id="creditCard">Credit Card Payment<br /><span class="font-italic">-$100</span></p>
+							</div>
+							<div class="p-3 mb-2 bg-success text-white"><p id="comChest4">Community Chest</p>
+							</div>
 						</div>
-					</div>
+					<!-- </div> -->
+				</div>
 
-					<!-- Game Board Row 10 -->
-					<div class="row">
-						<div class="col-lg-2">
+				<!-- Game Board Row 5-6 -->
+				<div class="row">
+					<!-- <div id="row5-6"> -->
+
+						<!-- Left Column -->
+						<div class="col-2 border border-light">
+							<div>
+								<p id="cityHall">City Hall</p>
+							</div>
+							<div class="p-3 mb-2 bg-info text-white">
+								<p>ERP<br /><span id="dhobyGhaut">Dhoby Ghaut</span><br /><span class="font-italic">-$50</span></p>
+							</div>
+						</div>
+
+						<!-- Middle Block -->
+						<div class="col-8">
+							<h1 class="text-danger">SINGAPORE'S</h1>
+							<h1>LIFE <span class="text-danger">"ADVENTURE"</span></h1>
+						</div>
+
+						<!-- Right Column -->
+						<div class="col-2 border border-light">
+							<div>
+								<p id="woodlands">Woodlands</p>
+							</div>
+							<div class="p-3 mb-2 bg-info text-white"><p>ERP<br /><span id="cck">Chua Chu Kang</span><br /><span class="font-italic">-$50</span></p>
+							</div>
+						</div>
+					<!-- </div> -->
+				</div>
+
+				<!-- Game Board Row 7-9 -->
+				<div class="row">
+					<!-- <div id="row7-9"> -->
+
+						<!-- Left Column -->
+						<div class="col-2 border border-light">
+							<div>
+								<p id="orchard">Orchard</p>
+							</div>
+							<div class="p-3 mb-2 bg-success text-white">
+								<p id="comChest2">Community Chest</p>
+							</div>
+							<div class="p-3 mb-2 bg-warning text-dark">
+								<p id="electrical">Electrical Company<br /><span class="font-italic">-$100</span></p>
+							</div>
+						</div>
+
+						<!--Middle Block -->
+						<div class="col-8">
+							<div id="comChestCard">
+								<h3>Community<br />Chest</h3>
+							</div>
+						</div>
+
+						<!-- Right Column -->
+						<div class="col-2 border border-light">
+							<div class="p-3 mb-2 bg-primary text-white">
+								<p id="chance4">Chance</p>
+							</div>
+							<div>
+								<p id="jurongEast">Jurong East</p>
+							</div>
+							<div class="p-3 mb-2 bg-danger text-white">
+								<p id="luxury">Luxury Tax<br /><span class="font-italic">-$350</span></p>
+							</div>
+						</div>
+					<!-- </div> -->
+				</div>
+
+				<!-- Game Board Row 10 -->
+				<div class="row border border-light">
+					<!-- <div id="row10"> -->
+						<div class="col-2">
 							<img id="justVisitJail"src="img/just-visiting.jpg" alt="Just Visiting / Jail" />
 						</div>
-						<div class="col-lg-1 payment">
-							<p id="roadTax">Road Tax</p>
-							<p class="amt">-$100</p>
+						<div class="col-1 p-3 mb-2 bg-warning text-dark">
+							<p id="roadTax">Road Tax<br /><span class="font-italic">-$100</span></p>
 						</div>
-						<div class="col-lg-1">
+						<div class="col-1">
 							<p id="littleIndia">Little India</p>
 						</div>
-						<div class="col-lg-1 chance">
+						<div class="col-1 p-3 mb-2 bg-primary text-white">
 							<p id="chance1">Chance</p>
 						</div>
-						<div class="col-lg-1">
+						<div class="col-1">
 							<p id="serangoon">Serangoon</p>
 						</div>
-						<div class="col-lg-1 erp">
-							<p>ERP</p>
-							<p id="payaLebar">Paya Lebar</p>
-							<p class="amt">-$50</p>
+						<div class="col-1 p-3 mb-2 bg-info text-white">
+							<p>ERP<br /><span id="payaLebar">Paya Lebar</span><br /><span class="font-italic">-$50</span></p>
 						</div>
-						<div class="col-lg-1 tax">
-							<p id="income">Income Tax</p>
-							<p class="amt">-$200</p>
+						<div class="col-1 p-3 mb-2 bg-danger text-white">
+							<p id="income">Income Tax<br /><span class="font-italic">-$200</span></p>
 						</div>
-						<div class="col-lg-1">
+						<div class="col-1">
 							<p id="tampines">Tampines</p>
 						</div>
-						<div class="col-lg-1 chest">
+						<div class="col-1 p-3 mb-2 bg-success text-white">
 							<p id="comChest1">Community Chest</p>
 						</div>
-						<div class="col-lg-2">
+						<div class="col-2">
 							<img id="go" src="img/go.gif" alt="GO" />
 						</div>
-					</div>
+					<!-- </div> -->
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- JS Script -->
-		<script type="text/javascript" href="js/script.js"></script>
 
-		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
-	</body>
+	<!-- JS Script -->
+	<script type="text/javascript" href="js/script.js"></script>
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
+</body>
 </html>

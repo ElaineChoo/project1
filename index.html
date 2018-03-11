@@ -21,11 +21,11 @@
 
 	<!-- set width: 100% -->
 	<div class="container-fluid">
-		<!-- 1st row = intensionally left blank for nested column-->
 		<div class="row;">
 
 			<!-- Game board area -->
 			<div class="col-8">
+
 				<!-- Game Board Row 1 -->
 				<div class="row" style="height: 150px">
 					<div class="col-2 thumbnail p-0 m-0 h-100 border border-light d-inline-block" style="width: 150px;">
@@ -199,6 +199,66 @@
 						<img id="go" src="img/go.gif" alt="GO" style="width:100%">
 					</div>
 				</div>
+			</div>
+
+			<!-- Control Panel -->
+			<div class="col-4">
+
+				<!-- Instruction Button -->
+				<div class="row">
+					<div class="col-12 my-3">
+						<div>
+							<a href="#" class="btn btn-info btn-warning btn-lg active" aria-pressed="true" role="button">Instruction</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Timer for Quiz -->
+				<div class="row">
+					<div class="col-12">
+						<div>
+							<h3>Timer<br /><span class="text-danger" id="timer">30s</span></h3>
+						</div>
+					</div>
+				</div>
+
+				<!-- Player Score -->
+				<div class="row">
+					<div class="col-12">
+						<div>
+							<h3 class="m-0">Player 1<br /><span class="text-primary" id="score">Score: $1500</span></h3>
+						</div>
+					</div>
+				</div>
+
+				<!-- Dice Display -->
+				<div class="row">
+					<div class="col-12">
+						<div>
+							<h3 class="mt-3 mb-0 text-success">Dice</h3>
+						</div>
+						<div class="row mx-5 mb-3 border border-light rounded" style="height: 130px">
+							<div class="col-1"></div>
+							<div class="col-5 p-0 text-danger">
+								<h3 id=diceA>Dice A<br /><h1 class="mx-5 my-1 px-3 py-2 border border-light rounded">1</h1></h3>
+							</div>
+							<div class="col-5 p-0 text-danger">
+								<h3 id=diceB> Dice B<br /><h1 class="mx-5 my-1 px-3 py-2 border border-light rounded">1</h1></h3>
+							</div>
+							<div class="col-1"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Button to roll the dice -->
+				<div class="row">
+					<div class="col-12 my-3">
+						<div>
+							<button type="button" class="btn btn-success btn-lg">Roll the Dice</button>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>

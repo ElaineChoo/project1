@@ -21,7 +21,7 @@
 
 	<!-- set width: 100% -->
 	<div class="container-fluid">
-		<div class="row;">
+		<div class="row">
 
 			<!-- Game board area -->
 			<div class="col-sm-8">
@@ -30,33 +30,43 @@
 				<div class="row" style="height: 150px">
 					<div class="col-2 thumbnail p-0 m-0 h-100 border border-light d-inline-block" style="width: 150px;">
 						<img id="freeParking" src="img/freePark.png" alt="Free Parking" style="width:100%">
+						<img class="player1Token img-overlay" id="p1-freeParking" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="m-0" id="marinaBay">Marina Bay</p>
+						<img class="player1Token img-overlay" id="p1-marinaBay" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-primary text-white h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="mx-auto mb-0" id="chance3">Chance</p>
+						<img class="player1Token img-overlay" id="p1-chance3" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-warning text-dark h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p id="pay-insurance">Insurance Payment<br /><span class="font-italic">-$100</span></p>
+						<img class="player1Token img-overlay" id="p1-insurance" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="m-0" id="outramPark">Outram Park</p>
+						<img class="player1Token img-overlay" id="p1-outramPark" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-info text-white h-100 border border-light d-flex align-items-center" style="width: 75px;">
-						<p class="m-0">ERP<br /><span id="erp-harbourFront">Harbour Front</span><br /><span class="font-italic">-$50</span></p>
+						<p class="m-0">ERP<br /><span id="erp-harbourFront">Harbour Front</span><br /><span class="font-italic">-$50</span></p>			
+						<img class="player1Token img-overlay" id="p1-erp-harbourFront" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-warning text-dark h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p id="pay-waterWorks">Water Works<br /><span class="font-italic">-$100</span></p>
+						<img class="player1Token img-overlay" id="p1-pay-waterWorks" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="m-0" id="bounaVista">Bouna Vista</p>
+						<img class="player1Token img-overlay" id="p1-bounaVista" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-success text-white h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="mx-auto mb-0" id="comChest3">Commu-<br />nity<br />Chest</p>
+						<img class="player1Token img-overlay" id="p1-comChest3" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-2 thumbnail p-0 m-0 h-100 border border-light d-inline-block" style="width: 150px;">
 						<img id="goToJail" src="img/GoToJail.jpg" alt="Go To Jail" style="width:100%">
+						<img class="player1Token img-overlay" id="p1-goToJail" src="img/token.png" alt="Player 1's Token">
 					</div>
 
 				</div>
@@ -68,13 +78,16 @@
 					<div class="col-2 p-0">
 						<div class= "w-100 p-0 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="rafflesPlace">Raffles Place</p>
+							<img class="player1Token img-overlay" id="p1-rafflesPlace" src="img/token.png" alt="Player 1's Token">
 						</div>
 						<div class="w-100 p-0 border border-light" style="height: 75px;">
 							<p class= "py-3 m-0 bg-warning text-dark" id="pay-petrolStn">Petrol Station<br /><span class="font-italic">-$100</span>
 							</p>
+							<img class="player1Token img-overlay" src="img/token.png" alt="Player 1's Token" id="p1-pay-petrolStn" style="margin-top: 70px;">
 						</div>
 						<div class = "p-0 m-0 bg-primary text-white w-100 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="chance2">Chance</p>
+							<img class="player1Token img-overlay" id="p1-chance2" src="img/token.png" alt="Player 1's Token" style="margin-top: 140px;">
 						</div>
 					</div>
 
@@ -89,12 +102,15 @@
 					<div class="col-2 p-0">
 						<div class= "w-100 p-0 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="bishan">Bishan</p>
+							<img class="player1Token img-overlay" id="p1-bishan" src="img/token.png" alt="Player 1's Token">
 						</div>
 						<div class="p-0 m-0 bg-warning text-dark w-100 border border-light" style="height: 75px;">
 							<p class="m-0 py-3" id="pay-creditCard">Credit Card Payment<br /><span class="font-italic">-$100</span></p>
+							<img class="player1Token img-overlay" id="p1-pay-creditCard" src="img/token.png" alt="Player 1's Token" style="margin-top: 70px;">
 						</div>
 						<div class="p-0 m-0 bg-success text-white w-100 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="comChest4">Community Chest</p>
+							<img class="player1Token img-overlay" id="p1-comChest4" src="img/token.png" alt="Player 1's Token" style="margin-top: 140px;">
 						</div>
 					</div>
 				</div>
@@ -106,9 +122,11 @@
 					<div class="col-2 p-0">
 						<div class= "w-100 p-0 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="cityHall">City Hall</p>
+							<img class="player1Token img-overlay" id="p1-cityHall" src="img/token.png" alt="Player 1's Token">
 						</div>
 						<div class="p-0 m-0 bg-info text-white w-100 border border-light" style="height: 75px;">
 							<p class="m-0">ERP<br /><span id="erp-dhobyGhaut">Dhoby Ghaut</span><br /><span class="font-italic">-$50</span></p>
+							<img class="player1Token img-overlay" id="p1-erp-dhobyGhaut" src="img/token.png" alt="Player 1's Token" style="margin-top: 70px;">
 						</div>
 					</div>
 
@@ -122,9 +140,11 @@
 					<div class="col-2 p-0">
 						<div class= "w-100 p-0 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="woodlands">Woodlands</p>
+							<img class="player1Token img-overlay" id="p1-woodlands" src="img/token.png" alt="Player 1's Token">
 						</div>
 						<div class="p-0 m-0 bg-info text-white w-100 border border-light" style="height: 75px;">
 							<p class="m-0">ERP<br /><span id="erp-cck">Chua Chu Kang</span><br /><span class="font-italic">-$50</span></p>
+							<img class="player1Token img-overlay" id="p1-erp-cck" src="img/token.png" alt="Player 1's Token" style="margin-top: 70px;">
 						</div>
 					</div>
 				</div>
@@ -136,12 +156,15 @@
 					<div class="col-2 p-0">
 						<div class= "w-100 p-0 m-0 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="orchard">Orchard</p>
+							<img class="player1Token img-overlay" id="p1-orchard" src="img/token.png" alt="Player 1's Token">
 						</div>
 						<div class="p-0 m-0 bg-success text-white w-100 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="comChest2">Community Chest</p>
+							<img class="player1Token img-overlay" id="p1-comChest2" src="img/token.png" alt="Player 1's Token" style="margin-top: 70px;">
 						</div>
 						<div class="p-0 m-0 bg-warning text-dark w-100 border border-light" style="height: 75px;">
 							<p class="py-3 m-0" id="pay-electrical">Electrical Company<br /><span class="font-italic">-$100</span></p>
+							<img class="player1Token img-overlay" id="p1-pay-electrical" src="img/token.png" alt="Player 1's Token" style="margin-top: 140px;">
 						</div>
 					</div>
 
@@ -156,12 +179,15 @@
 					<div class="col-2 p-0">
 						<div class="p-0 m-0 bg-primary text-white w-100 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="chance4">Chance</p>
+							<img class="player1Token img-overlay" id="p1-chance4" src="img/token.png" alt="Player 1's Token">
 						</div>
 						<div class= "w-100 p-0 m-0 border border-light d-flex align-items-center" style="height: 75px;">
 							<p class="mx-auto mb-0" id="jurongEast">Jurong East</p>
+							<img class="player1Token img-overlay" id="p1-jurongEast" src="img/token.png" alt="Player 1's Token" style="margin-top: 70px;">
 						</div>
 						<div class="p-0 m-0 bg-danger text-white w-100 border border-light" style="height: 75px;">
 							<p class="py-3 m-0" id="luxury">Luxury Tax<br /><span class="font-italic">-$350</span></p>
+							<img class="player1Token img-overlay" id="p1-luxury" src="img/token.png" alt="Player 1's Token" style="margin-top: 140px;">
 						</div>
 					</div>
 				</div>
@@ -170,33 +196,43 @@
 				<div class="row" style="height: 150px">
 					<div class="col-2 thumbnail p-0 m-0 h-100 border border-light d-inline-block" style="width: 150px;">
 						<img id="justVisitJail" src="img/just-visiting.jpg" alt="Just Visiting / Jail" style="width:100%">
+						<img class="player1Token img-overlay" id="p1-justVisitJail" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-warning text-dark h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="mx-auto mb-0" id="pay-roadTax">Road Tax<br /><span class="font-italic">-$100</span></p>
+						<img class="player1Token img-overlay" id="p1-pay-roadTax" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0  h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="mx-auto mb-0" id="littleIndia">Little<br />India</p>
+						<img class="player1Token img-overlay" id="p1-littleIndia" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-primary text-white h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="mx-auto mb-0" id="chance1">Chance</p>
+						<img class="player1Token img-overlay" id="p1-chance1" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="mx-auto mb-0" id="serangoon">Seran-<br />goon</p>
+						<img class="player1Token img-overlay" id="p1-serangoon" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-info text-white h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="m-0">ERP<br /><span id="erp-payaLebar">Paya Lebar</span><br /><span class="font-italic">-$50</span></p>
+						<img class="player1Token img-overlay" id="p1-erp-payaLebar" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-danger text-white h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="m-0" id="income">Income Tax<br /><span class="font-italic">-$200</span></p>
+						<img class="player1Token img-overlay" id="p1-income" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0  h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="mx-auto mb-0" id="tampines">Tampines</p>
+						<img class="player1Token img-overlay" id="p1-tampines" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-1 p-0 m-0 bg-success text-white h-100 border border-light d-flex align-items-center" style="width: 75px;">
 						<p class="mx-auto mb-0" id="comChest1">Commu-<br />nity<br />Chest</p>
+						<img class="player1Token img-overlay" id="p1-comChest1" src="img/token.png" alt="Player 1's Token">
 					</div>
 					<div class="col-2 thumbnail p-0 m-0 h-100 border border-light d-inline-block" style="width: 150px;">
 						<img id="go" src="img/go.gif" alt="GO" style="width:100%">
+						<img class="player1Token img-overlay" id="p1-go" src="img/token.png" alt="Player 1's Token">
 					</div>
 				</div>
 			</div>

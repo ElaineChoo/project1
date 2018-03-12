@@ -55,6 +55,7 @@ var ops = [];
 var mathTotal = 0;
 var operator="";
 var chanceAns="";
+
 function mathQuiz() {
 	num1 = Math.floor((Math.random()*11)+1);
 	num2 = Math.floor((Math.random()*11)+1);
@@ -226,6 +227,9 @@ document.getElementById("timer").innerText = timer;
 //toggle timer appearance:
 var toggleTimer = document.getElementById('timerClock');
 
+//toggle player token appearance:
+var toggleToken = document.querySelectorAll('.player1Token');
+console.log(toggleToken);
 //default token location (aka start point)
 // var tokenLocation = 0;
 
@@ -238,21 +242,14 @@ document.addEventListener('DOMContentLoaded', function() {
     //hide timer
     toggleTimer.style.visibility = 'hidden';
 
-    //display player token at default location
-    // tokenAtDefault();
+    //hide all player token
+    for (var i=0; i < (toggleToken.length); i++){
+    	toggleToken[i].style.visibility = 'hidden';
+    }
 
     //add event listener for submit button
     // var submitButton = document.querySelector("#submitButton");
     // submitButton.addEventListener("click", onSubmit);
 });
 
-// function tokenAtDefault () {
-// 	//display player token at default location
-//     var showToken = document.getElementById("location");
-//     var layer = document.createElement('div');
-//     showToken.appendChild('div');
-//     var img = document.createElement('img');
-//     img.src = img/token.png;
-//     layer.appendChild(img);
-// }
 

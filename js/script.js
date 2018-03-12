@@ -1,6 +1,6 @@
 //countdown timer
 function countDownTimer(){
-    var downloadTimer = setInterval(function(){
+	var downloadTimer = setInterval(function(){
     	//timer will deduct every sec
     	timer--;
     	//display on browser
@@ -10,43 +10,11 @@ function countDownTimer(){
     		clearInterval(downloadTimer);
     	}
     //update timer every second
-    },1000);
+},1000);
 }
 // countDownTimer();
 
-var number = 0;
 
-//function for the token to be on the board (index for board array)
-function tokenPosition () {
-	//function to generate random number
-	function getRandomNumber() {
-		number = (Math.floor(Math.random()*6)+1);
-	}
-
-	//generate random number
-	getRandomNumber();
-	diceA = number;
-	//input number into dice A
-	document.getElementById("diceA").innerText = number;
-	//console.log(`dice A: ${diceA}`);
-	
-	//generate random number
-	getRandomNumber();
-	diceB = number;
-	//input number into diceB
-	document.getElementById("diceB").innerText = number;
-	//console.log(`dice B: ${diceB}`);
-
-	// total number of move
-	totalMove = diceA + diceB;
-	//console.log(`totalMove: ${totalMove}`);
-
-	//position of token
-	token += totalMove;
-}
-
-// tokenPosition();
-// console.log(token);
 
 //quiz for Chance Card
 var num1 = 0;
@@ -205,7 +173,7 @@ function compareGKAns (comChestAns){
 //Initialising Game
 
 //board sequence
-var board = ["go", "comChest1", "tampines", "income", "erp-payaLebar", "serangoon", "chance1", "littleIndia", "pay-roadTax", "justVisitJail", "pay-electrical", "comChest2", "orchard", "erp-dhobyGhaut", "cityHall", "chance2", "pay-petrolStn", "rafflesPlace", "freeParking", "marinaBay", "chance3", "pay-insurance", "outramPark", "erp-harbourFront", "pay-waterWorks", "bounaVista", "comChest3", "goToJail", "bishan", "pay-creditCard", "comChest4", "woodlands", "erp-cck", "chance4", "jurongEast", "luxury"];
+var board = ["go", "comChest1", "tampines", "income", "epay-payaLebar", "serangoon", "chance1", "littleIndia", "pay-roadTax", "justVisitJail", "pay-electrical", "comChest2", "orchard", "epay-dhobyGhaut", "cityHall", "chance2", "pay-petrolStn", "rafflesPlace", "freeParking", "marinaBay", "chance3", "pay-insurance", "outramPark", "epay-harbourFront", "pay-waterWorks", "bounaVista", "comChest3", "goToJail", "bishan", "pay-creditCard", "comChest4", "woodlands", "epay-cck", "chance4", "jurongEast", "luxury"];
 // console.log(`board: ${board}`);
 
 //var for dice A, dice B and total move
@@ -219,6 +187,9 @@ var totalMove = 0;
 //default player1 score
 var p1Score = 1500;
 document.getElementById("p1Score").innerText = p1Score;
+
+//default token location (aka start point)
+var tokenLocation = 0;
 
 //default amount of time given
 var timer = 30;
@@ -239,38 +210,188 @@ function hideAllToken(){
 	}
 }
 
+var tokenCurrentPos;
+
 function displayToken(){
+
+	tokenCurrentPos = board[tokenLocation];
+	console.log(tokenCurrentPos);
 	//get token location
 	var onToken = document.getElementById(tokenCurrentPos);
 	// console.log(onToken);
+
+	hideAllToken();
 
 	//display token
 	onToken.style.visibility = "visible";
 }
 
-//default token location (aka start point)
-var tokenLocation = 0;
 
-var tokenCurrentPos = board[tokenLocation];
-// console.log(tokenCurrentPos);
+function rollTheDice () {
 
-// function rollTheDice () {
+	var rollBtn = document.getElementById('rollDice');
+	rollBtn.addEventListener("click", diceNumber);
+}
 
+//function for the token to be on the board (index for board array)
+function diceNumber () {
 	
-// }
+	var number = 0;
+	//function to generate random number
+	function randomDiceNo() {
+		number = (Math.floor(Math.random()*6)+1);
+	}
 
+	randomDiceNo ();
+	diceA = number;
+	//input number into dice A
+	document.getElementById("diceA").innerText = number;
+	//console.log(`dice A: ${diceA}`);
+	
+	//generate random number
+	randomDiceNo();
+	diceB = number;
+	//input number into diceB
+	document.getElementById("diceB").innerText = number;
+	//console.log(`dice B: ${diceB}`);
+
+	tokenPosition();
+}
+
+var count = 0;
+
+function tokenPosition() {
+	var rollDiceA = parseInt (document.getElementById("diceA").innerText);
+	var rollDiceB = parseInt (document.getElementById("diceB").innerText);
+
+	// total number of move
+	totalMove = rollDiceA + rollDiceB
+	//console.log(`totalMove: ${totalMove}`);
+
+	tokenLocation += totalMove;
+
+	// console.log(rollDiceA);
+	// console.log(rollDiceB);
+	// console.log(totalMove);
+	console.log(tokenLocation);
+
+	var testNumber = tokenLocation - 35;
+	console.log(testNumber);
+
+
+	if (testNumber < 0) {
+		displayToken();
+		deductScore();
+		quizTime();
+		console.log(`nv pass go ${count}`);
+	}
+	else if (testNumber === 0){
+		tokenLocation = 0;
+		displayToken();
+		deductScore();
+		count++;
+		p1Score += 200;
+		document.getElementById("p1Score").innerText = p1Score;
+		console.log(`@ go ${count}`);
+	}
+	else{
+		console.log(tokenLocation);
+		console.log(testNumber);
+		tokenLocation = testNumber-1;
+		console.log(tokenLocation);
+		displayToken();
+		deductScore();
+		count++;
+		p1Score += 200;
+		document.getElementById("p1Score").innerText = p1Score;
+		console.log(`go pass ${count}`);
+	}
+}
+
+// tokenPosition();
+
+//check if any deduction is required
+function deductScore() {
+	if (tokenCurrentPos === board.includes(income)) {
+		p1Score -= 200;
+		document.getElementById("p1Score").innerText = p1Score;
+	}
+	else if (tokenCurrentPos === board.includes(epay)) {
+		p1Score -= 50;
+		document.getElementById("p1Score").innerText = p1Score;
+	}
+	else if (tokenCurrentPos === board.includes(pay)) {
+		p1Score -= 100;
+		document.getElementById("p1Score").innerText = p1Score;
+	}
+	else if (tokenCurrentPos === board.includes(luxury)) {
+		p1Score -= 350;
+		document.getElementById("p1Score").innerText = p1Score;
+	}
+	else {
+		goJail();
+	}
+}
+
+function goJail () {
+	if (tokenCurrentPos === board.includes(goToJail)){
+		tokenCurrentPos -=18;
+		displayToken();
+		p1Score -= 50;
+		document.getElementById("p1Score").innerText = p1Score;
+	}
+	else {
+		quizTime();
+	}
+}
+
+function quizTime () {
+	if (tokenCurrentPos === board.includes(chance)) {
+		document.getElementById('chanceCard').addEventListener("click", function(){
+			countDownTimer();
+			mathQuiz();
+			compareMathAns();
+		});
+	}
+	else if (tokenCurrentPos === board.includes(comChest)) {
+		document.getElementById('comChestCard').addEventListener("click", function(){
+			countDownTimer();
+			gkQuestion();
+			compareGKAns();
+		});
+	}
+	else {
+		checkScore();
+	}
+}
+
+function checkScore() {
+	if (p1Score < 0) {
+		alert(`Awww... You went BANKRUPT!!! Try Harder Next Time!!`);
+	}
+	else if (count === 3) {
+		if (p1Score > 0) {
+			alert(`CONGRATS!!! You manage to SURVIVE in SINGAPORE with $${p1Score}`);
+		}
+		else {
+			alert(`OHHHHHH.... You almost manage to survive..... Do Try Again!!!`);
+		}
+	}
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     //hide timer
     toggleTimer.style.visibility = 'hidden';
-
-    //hide all player token
-    hideAllToken();
     
     //display token at start point
     displayToken();
 
+    //player click on roll dice to start game
+    rollTheDice();
+
+    //display token new location
+    // displayToken(); //this is wrong
     //add event listener for submit button
     // var submitButton = document.querySelector("#submitButton");
     // submitButton.addEventListener("click", onSubmit);

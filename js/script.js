@@ -227,15 +227,38 @@ document.getElementById("timer").innerText = timer;
 //toggle timer appearance:
 var toggleTimer = document.getElementById('timerClock');
 
-//toggle player token appearance:
-var toggleToken = document.querySelectorAll('.player1Token');
-console.log(toggleToken);
+//function to hide all player1 token
+function hideAllToken(){
+
+	//toggle player1 token appearance:
+	var toggleToken = document.querySelectorAll('.player1Token');
+	// console.log(toggleToken);
+
+	for (var i=0; i < (toggleToken.length); i++){
+		toggleToken[i].style.visibility = 'hidden';
+	}
+}
+
+function displayToken(){
+	//get token location
+	var onToken = document.getElementById(tokenCurrentPos);
+	// console.log(onToken);
+
+	//display token
+	onToken.style.visibility = "visible";
+}
+
 //default token location (aka start point)
-// var tokenLocation = 0;
+var tokenLocation = 0;
 
-// var location = board[tokenLocation];
+var tokenCurrentPos = board[tokenLocation];
+// console.log(tokenCurrentPos);
 
-// console.log(location);
+// function rollTheDice () {
+
+	
+// }
+
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -243,9 +266,10 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleTimer.style.visibility = 'hidden';
 
     //hide all player token
-    for (var i=0; i < (toggleToken.length); i++){
-    	toggleToken[i].style.visibility = 'hidden';
-    }
+    hideAllToken();
+    
+    //display token at start point
+    displayToken();
 
     //add event listener for submit button
     // var submitButton = document.querySelector("#submitButton");

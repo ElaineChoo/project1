@@ -4,7 +4,7 @@ Start of Game
 
 2. Timer hidden from browser //hidden from player //ok
 
-3. Player token at position '0' //shown to player
+3. Player token at position '0' //shown to player //ok
 
 4. Player click on button "Roll the dice" //Player's action
 

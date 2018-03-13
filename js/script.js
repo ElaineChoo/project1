@@ -209,11 +209,12 @@ var toggleTimer = document.getElementById('timerClock');
 function hideAllToken(){
 
 	//toggle player1 token appearance:
-	var toggleToken = document.querySelectorAll('.player1Token');
+	var toggleToken = document.querySelectorAll('.player1Token'); //x
 	// console.log(toggleToken);
 
+
 	for (var i=0; i < (toggleToken.length); i++){
-		toggleToken[i].style.visibility = 'hidden';
+		toggleToken[i].style.opacity = 0;
 	}
 }
 
@@ -231,7 +232,12 @@ function displayToken(){
 	hideAllToken();
 
 	//display token
-	onToken.style.visibility = "visible";
+	// var el = document.querySelector('div'),
+	onToken.style.opacity = 0;
+	requestAnimationFrame(function() {
+	    onToken.style.transition = 'opacity 3s';
+	    onToken.style.opacity = 1;
+	});
 }
 
 
@@ -269,8 +275,8 @@ function diceNumber () {
 var count = 0;
 
 function tokenPosition() {
-	var rollDiceA = 13;//parseInt (document.getElementById("diceA").innerText);
-	var rollDiceB = 14;//parseInt (document.getElementById("diceB").innerText);
+	var rollDiceA = parseInt (document.getElementById("diceA").innerText);
+	var rollDiceB = parseInt (document.getElementById("diceB").innerText);
 
 	// total number of move
 	totalMove = rollDiceA + rollDiceB
@@ -344,10 +350,7 @@ function goJail () {
 	console.log('just going to jail');
 	if (tokenCurrentPos === "goToJail"){
 		console.log('enter if statement of jail, going to backspace');
-
-		//fade out from Go to Jail in about3 sec
-
-
+		displayToken();
 		tokenLocation = 9;
 		console.log(`deducted space ${tokenLocation} & ${tokenCurrentPos}`);
 		displayToken();

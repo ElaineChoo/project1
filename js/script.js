@@ -68,13 +68,13 @@ function compareMathAns (chanceAns) {
 	console.log("just in the compare math ans if else");
 	//if answer is correct, add score
 	if (chanceAns == mathTotal) {
-		p1Score += 150;
+		p1Score += 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	//if answer is wrong, deduct score
 	else {
 		console.log("just in the else of compare math ans");
-		p1Score -= 50;
+		p1Score -= 100;
 		console.log('deducted score');
 		document.getElementById("p1Score").innerText = p1Score;
 		console.log('display score on UI');
@@ -162,12 +162,12 @@ function compareGKAns (comChestAns){
 
 	//if answer is correct, add score
 	if (comChestAnsUC === comChestQuiz[questionIndex]["answer"]){
-		p1Score += 150;
+		p1Score += 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	//if answer is wrong, minus score
 	else {
-		p1Score -= 50;
+		p1Score -= 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 }
@@ -235,7 +235,7 @@ function displayToken(){
 	// var el = document.querySelector('div'),
 	onToken.style.opacity = 0;
 	requestAnimationFrame(function() {
-	    onToken.style.transition = 'opacity 3s';
+	    onToken.style.transition = 'opacity 1s';
 	    onToken.style.opacity = 1;
 	});
 }
@@ -333,11 +333,11 @@ function deductScore() {
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else if (tokenCurrentPos.includes('pay')) {
-		p1Score -= 100;
+		p1Score -= 150;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else if (tokenCurrentPos.includes('luxury')) {
-		p1Score -= 350;
+		p1Score -= 400;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else {
@@ -355,7 +355,7 @@ function goJail () {
 		console.log(`deducted space ${tokenLocation} & ${tokenCurrentPos}`);
 		displayToken();
 		console.log(`after tokenCurrentPos = justVisitJail, displayToken = ${tokenCurrentPos}`);
-		p1Score -= 50;
+		p1Score -= 500;
 		console.log(`p1Score after deducted 50 from going into jail: ${p1Score}`);
 		document.getElementById("p1Score").innerText = p1Score;
 	}

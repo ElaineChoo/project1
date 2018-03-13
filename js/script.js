@@ -55,6 +55,8 @@ function mathQuiz() {
 		chanceAns = prompt(num1 + " * " + num2 + " = ?" + "\n" + "\n" + "Input your answer below: ");
 		break;
 	}
+	console.log("going to compare math answer");
+	compareMathAns (chanceAns);
 }
 
 // mathQuiz();
@@ -63,6 +65,7 @@ function mathQuiz() {
 
 //comparing the input answer and the correct answer
 function compareMathAns (chanceAns) {
+	console.log("just in the compare math ans if else");
 	//if answer is correct, add score
 	if (chanceAns == mathTotal) {
 		p1Score += 150;
@@ -70,8 +73,11 @@ function compareMathAns (chanceAns) {
 	}
 	//if answer is wrong, deduct score
 	else {
+		console.log("just in the else of compare math ans");
 		p1Score -= 50;
+		console.log('deducted score');
 		document.getElementById("p1Score").innerText = p1Score;
+		console.log('display score on UI');
 	}
 }
 
@@ -144,6 +150,7 @@ function gkQuestion () {
 	comChestAns = prompt(comChestQuiz[questionIndex]["question"] + "\n" + comChestQuiz[questionIndex]["option"].join("\n") + "\n" + "\n"+ "Input anwer 'A', 'B', 'C' or 'D'.");
 
 	console.log(questionIndex);
+	compareGKAns(comChestAns);
 }
 // gkQuestion();
 // console.log(comChestAns);
@@ -152,7 +159,7 @@ function gkQuestion () {
 function compareGKAns (comChestAns){
 
 	var comChestAnsUC = comChestAns.toUpperCase();
-	console.log(comChestAnsUC);
+
 	//if answer is correct, add score
 	if (comChestAnsUC === comChestQuiz[questionIndex]["answer"]){
 		p1Score += 150;
@@ -211,13 +218,14 @@ function hideAllToken(){
 }
 
 var tokenCurrentPos;
+var onToken = document.getElementById(tokenCurrentPos);
 
 function displayToken(){
 
 	tokenCurrentPos = board[tokenLocation];
 	console.log(tokenCurrentPos);
 	//get token location
-	var onToken = document.getElementById(tokenCurrentPos);
+	onToken = document.getElementById(tokenCurrentPos);
 	// console.log(onToken);
 
 	hideAllToken();
@@ -261,8 +269,8 @@ function diceNumber () {
 var count = 0;
 
 function tokenPosition() {
-	var rollDiceA = parseInt (document.getElementById("diceA").innerText);
-	var rollDiceB = parseInt (document.getElementById("diceB").innerText);
+	var rollDiceA = 13;//parseInt (document.getElementById("diceA").innerText);
+	var rollDiceB = 14;//parseInt (document.getElementById("diceB").innerText);
 
 	// total number of move
 	totalMove = rollDiceA + rollDiceB
@@ -282,7 +290,6 @@ function tokenPosition() {
 	if (testNumber < 0) {
 		displayToken();
 		deductScore();
-		quizTime();
 		console.log(`nv pass go ${count}`);
 	}
 	else if (testNumber === 0){
@@ -290,74 +297,84 @@ function tokenPosition() {
 		displayToken();
 		deductScore();
 		count++;
+		checkScore();
 		p1Score += 200;
 		document.getElementById("p1Score").innerText = p1Score;
 		console.log(`@ go ${count}`);
 	}
 	else{
-		console.log(tokenLocation);
-		console.log(testNumber);
 		tokenLocation = testNumber-1;
 		console.log(tokenLocation);
 		displayToken();
 		deductScore();
 		count++;
+		checkScore();
 		p1Score += 200;
 		document.getElementById("p1Score").innerText = p1Score;
 		console.log(`go pass ${count}`);
 	}
 }
 
-// tokenPosition();
 
 //check if any deduction is required
 function deductScore() {
-	if (tokenCurrentPos === board.includes(income)) {
+	if (tokenCurrentPos.includes('income')) {
 		p1Score -= 200;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
-	else if (tokenCurrentPos === board.includes(epay)) {
+	else if (tokenCurrentPos.includes('epay')) {
 		p1Score -= 50;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
-	else if (tokenCurrentPos === board.includes(pay)) {
+	else if (tokenCurrentPos.includes('pay')) {
 		p1Score -= 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
-	else if (tokenCurrentPos === board.includes(luxury)) {
+	else if (tokenCurrentPos.includes('luxury')) {
 		p1Score -= 350;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else {
+		console.log('going to jail');
 		goJail();
 	}
 }
 
 function goJail () {
-	if (tokenCurrentPos === board.includes(goToJail)){
-		tokenCurrentPos -=18;
+	console.log('just going to jail');
+	if (tokenCurrentPos === "goToJail"){
+		console.log('enter if statement of jail, going to backspace');
+
+		//fade out from Go to Jail in about3 sec
+
+
+		tokenLocation = 9;
+		console.log(`deducted space ${tokenLocation} & ${tokenCurrentPos}`);
 		displayToken();
+		console.log(`after tokenCurrentPos = justVisitJail, displayToken = ${tokenCurrentPos}`);
 		p1Score -= 50;
+		console.log(`p1Score after deducted 50 from going into jail: ${p1Score}`);
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else {
+		console.log('entering quiz time, else of goJail');
 		quizTime();
 	}
 }
 
 function quizTime () {
-	if (tokenCurrentPos === board.includes(chance)) {
+	if (tokenCurrentPos.includes('chance')) {
+		alert(`Click on the Chance Card box in the middle of the board to proceed with the quiz. You have 30 sec to answer.`)
 		document.getElementById('chanceCard').addEventListener("click", function(){
-			countDownTimer();
+			//countDownTimer();
 			mathQuiz();
-			compareMathAns();
 		});
 	}
-	else if (tokenCurrentPos === board.includes(comChest)) {
+	else if (tokenCurrentPos.includes('comChest')) {
+		alert(`Click on the Community Chest Card box in the middle of the board to proceed with the quiz. You have 30 sec to answer.`)
 		document.getElementById('comChestCard').addEventListener("click", function(){
-			countDownTimer();
+			//countDownTimer();
 			gkQuestion();
-			compareGKAns();
 		});
 	}
 	else {
@@ -389,12 +406,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //player click on roll dice to start game
     rollTheDice();
-
-    //display token new location
-    // displayToken(); //this is wrong
-    //add event listener for submit button
-    // var submitButton = document.querySelector("#submitButton");
-    // submitButton.addEventListener("click", onSubmit);
 });
 
 

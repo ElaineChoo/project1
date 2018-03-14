@@ -13,14 +13,24 @@ body {
 }
 
 .player1Token {
-	width: 4rem;
-	height: 4rem;
+	width: 3.8rem;
+	height: 3.8rem;
 	
 }
 
 .img-overlay {
 	position: absolute;
-	top: 20px;
+	top: 10px;
 	left: 10px;
 	z-index: 100;
+}
+
+#chanceCard {
+	background-color: #3366ff;
+	color: #FFFFFF;
+}
+
+#comChestCard {
+	background-color: #4CAF50;
+	color: #FFFFFF;
 }

@@ -1,3 +1,8 @@
+//display modal on first load
+// window.addEventListener('load', function () {
+// 	document.getElementById('instruction').modal('show');
+// });
+
 //countdown timer
 function countDownTimer(){
 	var downloadTimer = setInterval(function(){
@@ -65,19 +70,23 @@ function mathQuiz() {
 
 //comparing the input answer and the correct answer
 function compareMathAns (chanceAns) {
-	console.log("just in the compare math ans if else");
+	document.getElementById("instructBtn").disabled = false;
+	document.getElementById("rollDice").disabled = false;
+	//console.log("just in the compare math ans if else");
 	//if answer is correct, add score
 	if (chanceAns == mathTotal) {
+		alert("CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.");
 		p1Score += 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	//if answer is wrong, deduct score
 	else {
-		console.log("just in the else of compare math ans");
+		//console.log("just in the else of compare math ans");
+		alert("AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.");
 		p1Score -= 100;
-		console.log('deducted score');
+		//console.log('deducted score');
 		document.getElementById("p1Score").innerText = p1Score;
-		console.log('display score on UI');
+		//console.log('display score on UI');
 	}
 }
 
@@ -149,7 +158,7 @@ function gkQuestion () {
 	//pop up the randomised question & selection in prompt for player to answer
 	comChestAns = prompt(comChestQuiz[questionIndex]["question"] + "\n" + comChestQuiz[questionIndex]["option"].join("\n") + "\n" + "\n"+ "Input anwer 'A', 'B', 'C' or 'D'.");
 
-	console.log(questionIndex);
+	//console.log(questionIndex);
 	compareGKAns(comChestAns);
 }
 // gkQuestion();
@@ -157,16 +166,19 @@ function gkQuestion () {
 
 //compare the input answer and correct answer
 function compareGKAns (comChestAns){
-
+	document.getElementById("instructBtn").disabled = false;
+	document.getElementById("rollDice").disabled = false;
 	var comChestAnsUC = comChestAns.toUpperCase();
 
 	//if answer is correct, add score
 	if (comChestAnsUC === comChestQuiz[questionIndex]["answer"]){
+		alert("CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.");
 		p1Score += 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	//if answer is wrong, minus score
 	else {
+		alert("AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.");
 		p1Score -= 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
@@ -209,7 +221,7 @@ var toggleTimer = document.getElementById('timerClock');
 function hideAllToken(){
 
 	//toggle player1 token appearance:
-	var toggleToken = document.querySelectorAll('.player1Token'); //x
+	var toggleToken = document.querySelectorAll('.player1Token');
 	// console.log(toggleToken);
 
 
@@ -231,6 +243,10 @@ function displayToken(){
 
 	hideAllToken();
 
+	//disable chance and comChest button
+	document.getElementById("chanceCard").disabled = true;
+	document.getElementById("comChestCard").disabled = true;
+	
 	//display token
 	// var el = document.querySelector('div'),
 	onToken.style.opacity = 0;
@@ -243,6 +259,8 @@ function displayToken(){
 
 function rollTheDice () {
 
+	document.getElementById("instructBtn").disabled = false;
+	document.getElementById("rollDice").disabled = false;
 	var rollBtn = document.getElementById('rollDice');
 	rollBtn.addEventListener("click", diceNumber);
 }
@@ -367,18 +385,19 @@ function goJail () {
 
 function quizTime () {
 	if (tokenCurrentPos.includes('chance')) {
-		alert(`Click on the Chance Card box in the middle of the board to proceed with the quiz. You have 30 sec to answer.`)
-		document.getElementById('chanceCard').addEventListener("click", function(){
-			//countDownTimer();
-			mathQuiz();
-		});
+		document.getElementById("chanceCard").disabled = false;
+		document.getElementById("instructBtn").disabled = true;
+		document.getElementById("rollDice").disabled = true;
+		alert(`Click on the Chance Card box in the middle of the board to proceed with the quiz.`)
+
+		document.getElementById('chanceCard').addEventListener("click", mathQuiz);
 	}
 	else if (tokenCurrentPos.includes('comChest')) {
-		alert(`Click on the Community Chest Card box in the middle of the board to proceed with the quiz. You have 30 sec to answer.`)
-		document.getElementById('comChestCard').addEventListener("click", function(){
-			//countDownTimer();
-			gkQuestion();
-		});
+		document.getElementById("comChestCard").disabled = false;
+		document.getElementById("instructBtn").disabled = true;
+		document.getElementById("rollDice").disabled = true;
+		alert(`Click on the Community Chest Card box in the middle of the board to proceed with the quiz.`)
+		document.getElementById('comChestCard').addEventListener("click", gkQuestion);
 	}
 	else {
 		checkScore();
@@ -387,14 +406,17 @@ function quizTime () {
 
 function checkScore() {
 	if (p1Score < 0) {
-		alert(`Awww... You went BANKRUPT!!! Try Harder Next Time!!`);
+		document.getElementById("rollDice").disabled = true;
+		alert("Awww... You went BANKRUPT!!! Try Harder Next Time!!" + "\n" + "Refresh page to retry.");
 	}
 	else if (count === 3) {
 		if (p1Score > 0) {
-			alert(`CONGRATS!!! You manage to SURVIVE in SINGAPORE with $${p1Score}`);
+		document.getElementById("rollDice").disabled = true;
+			alert("CONGRATS!!! You manage to SURVIVE in SINGAPORE with $" + p1Score + "." + "\n" + "Do play again by refershing the page.")
 		}
 		else {
-			alert(`OHHHHHH.... You almost manage to survive..... Do Try Again!!!`);
+		document.getElementById("rollDice").disabled = true;
+			alert("OHHHHHH.... You almost manage to survive..... "+ "\n" + "Do Try Again by refreshing the page!!!");
 		}
 	}
 }

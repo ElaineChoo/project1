@@ -1,6 +1,11 @@
 body {
 	font-weight: 700;
 	text-align: center;
+	font-family: 'Arimo', sans-serif;
+}
+
+h1, h3 {
+	text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px;
 }
 
 #freePark, #go2Jail, #justVisiting, #start {
@@ -18,11 +23,36 @@ body {
 	
 }
 
+@keyframes blink {
+  50% {
+    background: radial-gradient(circle, #ffffff 15%, transparent 40%), #cc5;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    background: -webkit-radial-gradient(circle, #ffffff 15%, transparent 40%), #cc5;
+  }
+}
+@-moz-keyframes blink {
+  50% {
+    background: -moz-radial-gradient(circle, #ffffff 15%, transparent 40%), #cc5;
+  }
+}
+
+
 .img-overlay {
+	animation: blink .5s infinite;
+	-webkit-animation: blink .5s infinite;
+	-moz-animation: blink .5s infinite;
 	position: absolute;
 	top: 10px;
 	left: 10px;
 	z-index: 100;
+	background-color: #ff00ff;
+	border-radius: 1.9rem;
+	-moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
 }
 
 #chanceCard {
@@ -33,4 +63,38 @@ body {
 #comChestCard {
 	background-color: #4CAF50;
 	color: #FFFFFF;
+}
+
+#message {
+	border-radius: 20px;
+	height: 200px;
+	font-size: 25px;
+	-moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+}
+
+#instructBtn {
+	font-size: 25px;
+	-moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+}
+
+#rollDice {
+	font-size: 30px;
+	-moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+}
+
+#diceA, #diceB {
+
+	-moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+}
+
+#p1 {
+	font-size: 40px;
 }

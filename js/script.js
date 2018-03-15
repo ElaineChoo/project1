@@ -75,14 +75,14 @@ function compareMathAns (chanceAns) {
 	//console.log("just in the compare math ans if else");
 	//if answer is correct, add score
 	if (chanceAns == mathTotal) {
-		alert("CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.");
+		alertMsg.innerText = "CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.";
 		p1Score += 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	//if answer is wrong, deduct score
 	else {
 		//console.log("just in the else of compare math ans");
-		alert("AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.");
+		alertMsg.innerText = "AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.";
 		p1Score -= 100;
 		//console.log('deducted score');
 		document.getElementById("p1Score").innerText = p1Score;
@@ -105,7 +105,7 @@ var comChestQuiz = [
 {
 	question:"Which is the fastest animal on land?",
 	option: ["A: Cheetah", "B: Jaguar", "C: Panther", "D: Leopard"],
-	answer: "C"
+	answer: "A"
 },
 {
 	question:"Objects at the surface of water can be viewed from a submarine under water by using...",
@@ -172,13 +172,13 @@ function compareGKAns (comChestAns){
 
 	//if answer is correct, add score
 	if (comChestAnsUC === comChestQuiz[questionIndex]["answer"]){
-		alert("CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.");
+		alertMsg.innerText = "CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.";
 		p1Score += 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	//if answer is wrong, minus score
 	else {
-		alert("AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.");
+		alertMsg.innerText = "AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.";
 		p1Score -= 100;
 		document.getElementById("p1Score").innerText = p1Score;
 	}
@@ -192,7 +192,7 @@ function compareGKAns (comChestAns){
 //Initialising Game
 
 //board sequence
-var board = ["go", "comChest1", "tampines", "income", "epay-payaLebar", "serangoon", "chance1", "littleIndia", "pay-roadTax", "justVisitJail", "pay-electrical", "comChest2", "orchard", "epay-dhobyGhaut", "cityHall", "chance2", "pay-petrolStn", "rafflesPlace", "freeParking", "marinaBay", "chance3", "pay-insurance", "outramPark", "epay-harbourFront", "pay-waterWorks", "bounaVista", "comChest3", "goToJail", "bishan", "pay-creditCard", "comChest4", "woodlands", "epay-cck", "chance4", "jurongEast", "luxury"];
+var board = ["go", "comChest1", "tampines-free", "income", "epay-payaLebar", "serangoon-free", "chance1", "littleIndia-free", "pay-roadTax", "justVisitJail-free", "pay-electrical", "comChest2", "orchard-free", "epay-dhobyGhaut", "cityHall-free", "chance2", "pay-petrolStn", "rafflesPlace-free", "freeParking", "marinaBay-free", "chance3", "pay-insurance", "outramPark-free", "epay-harbourFront", "pay-waterWorks", "bounaVista-free", "comChest3", "goToJail", "bishan-free", "pay-creditCard", "comChest4", "woodlands-free", "epay-cck", "chance4", "jurongEast-free", "luxury"];
 // console.log(`board: ${board}`);
 
 //var for dice A, dice B and total move
@@ -216,6 +216,11 @@ document.getElementById("timer").innerText = timer;
 
 //toggle timer appearance:
 var toggleTimer = document.getElementById('timerClock');
+
+//output alert message
+var alertMsg = document.getElementById("message");
+
+
 
 //function to hide all player1 token
 function hideAllToken(){
@@ -323,6 +328,7 @@ function tokenPosition() {
 		count++;
 		checkScore();
 		p1Score += 200;
+		alertMsg.innerText = "CONGRATS!! You are at 'GO'. $200 has been credited to your account.";
 		document.getElementById("p1Score").innerText = p1Score;
 		console.log(`@ go ${count}`);
 	}
@@ -334,28 +340,37 @@ function tokenPosition() {
 		count++;
 		checkScore();
 		p1Score += 200;
+		alertMsg.innerText = "CONGRATS!! You have pass 'GO'. $200 has been credited to your account."
 		document.getElementById("p1Score").innerText = p1Score;
 		console.log(`go pass ${count}`);
 	}
 }
 
 
+
 //check if any deduction is required
 function deductScore() {
-	if (tokenCurrentPos.includes('income')) {
+	if (tokenCurrentPos.includes('free')) {
+		alertMsg.innerText = "You are currently at " + tokenCurrentPos + ".";
+	}
+	else if	(tokenCurrentPos.includes('income')) {
 		p1Score -= 200;
+		alertMsg.innerText = "It's time to pay Income Tax, $200 has been deducted from your account."
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else if (tokenCurrentPos.includes('epay')) {
 		p1Score -= 50;
+		alertMsg.innerText = "You have just pass by an ERP gantry. $50 has been deducted from your account."
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else if (tokenCurrentPos.includes('pay')) {
 		p1Score -= 150;
+		alertMsg.innerText = "The bill is here!! Time to make payment!! $150 has been deducted from your account."
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else if (tokenCurrentPos.includes('luxury')) {
 		p1Score -= 400;
+		alertMsg.innerText = "Hmm.. seems like you have been spluging... Here's your Luxury Tax bill. $400 has been deducted from your account."
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else {
@@ -367,14 +382,11 @@ function deductScore() {
 function goJail () {
 	console.log('just going to jail');
 	if (tokenCurrentPos === "goToJail"){
-		console.log('enter if statement of jail, going to backspace');
 		displayToken();
 		tokenLocation = 9;
-		console.log(`deducted space ${tokenLocation} & ${tokenCurrentPos}`);
 		displayToken();
-		console.log(`after tokenCurrentPos = justVisitJail, displayToken = ${tokenCurrentPos}`);
 		p1Score -= 500;
-		console.log(`p1Score after deducted 50 from going into jail: ${p1Score}`);
+		alertMsg.innerText = "What have you done??? $500 has been deducted for you to be bailed out of jail."
 		document.getElementById("p1Score").innerText = p1Score;
 	}
 	else {
@@ -388,16 +400,16 @@ function quizTime () {
 		document.getElementById("chanceCard").disabled = false;
 		document.getElementById("instructBtn").disabled = true;
 		document.getElementById("rollDice").disabled = true;
-		alert(`Click on the Chance Card box in the middle of the board to proceed with the quiz.`)
+		alertMsg.innerText = "Click on the Chance Card box in the middle of the board to proceed with the quiz.";
 
-		document.getElementById('chanceCard').addEventListener("click", mathQuiz);
+		//document.getElementById('chanceCard').addEventListener("click", mathQuiz);
 	}
 	else if (tokenCurrentPos.includes('comChest')) {
 		document.getElementById("comChestCard").disabled = false;
 		document.getElementById("instructBtn").disabled = true;
 		document.getElementById("rollDice").disabled = true;
-		alert(`Click on the Community Chest Card box in the middle of the board to proceed with the quiz.`)
-		document.getElementById('comChestCard').addEventListener("click", gkQuestion);
+		alertMsg.innerText="Click on the Community Chest Card box in the middle of the board to proceed with the quiz.";
+		//document.getElementById('comChestCard').addEventListener("click", gkQuestion);
 	}
 	else {
 		checkScore();
@@ -407,16 +419,16 @@ function quizTime () {
 function checkScore() {
 	if (p1Score < 0) {
 		document.getElementById("rollDice").disabled = true;
-		alert("Awww... You went BANKRUPT!!! Try Harder Next Time!!" + "\n" + "Refresh page to retry.");
+		alertMsg.innerText = "Awww... You went BANKRUPT!!! Try Harder Next Time!!" + "\n" + "Refresh page to retry.";
 	}
 	else if (count === 3) {
 		if (p1Score > 0) {
 		document.getElementById("rollDice").disabled = true;
-			alert("CONGRATS!!! You manage to SURVIVE in SINGAPORE with $" + p1Score + "." + "\n" + "Do play again by refershing the page.")
+			alertMsg.innerText = "CONGRATS!!! You manage to SURVIVE in SINGAPORE with $" + p1Score + "." + "\n" + "Do play again by refershing the page.";
 		}
 		else {
 		document.getElementById("rollDice").disabled = true;
-			alert("OHHHHHH.... You almost manage to survive..... "+ "\n" + "Do Try Again by refreshing the page!!!");
+			alertMsg.innerText = "OHHHHHH.... You almost manage to survive..... "+ "\n" + "Do Try Again by refreshing the page!!!";
 		}
 	}
 }

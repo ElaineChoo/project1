@@ -174,8 +174,13 @@
 					<!--Middle Block -->
 					<div class="col-8">
 						<div class="d-flex m-0 mt-5">
-							<div class="mx-auto my-2 p-3"><button type="button" id="comChestCard" onclick="gkQuestion()"><h3 class ="m-0 p-4">Community<br />Chest</h3></h3></button></div>
+							<div class="mx-auto my-0 p-3"><button class="btn btn-lg" id="comChestCard" data-toggle="modal" data-target="#quizModal"><h3 class ="m-0 p-4">Community<br />Chest</h3></h3></button></div>
 						</div>
+
+
+   <!-- <button type="button" id="comChestCard" onclick="gkQuestion()">
+</button>-->
+
 					</div>
 
 					<!-- Right Column -->
@@ -273,15 +278,6 @@
 					</div>
 				</div>
 
-				<!-- Timer for Quiz -->
-				<div class="row">
-					<div class="col-12">
-						<div>
-							<h3 id="timerClock">Timer<br /><span class="text-danger" id="timer"></span> sec</h3>
-						</div>
-					</div>
-				</div>
-
 				<!-- Dice Display -->
 				<div class="row">
 					<div class="col-12">
@@ -316,7 +312,7 @@
 
 	<!-- Modal -->
 	<div class="modal fade" id="instruction" tabindex="-1" role="dialog" aria-labelledby="instructionTitle" aria-hidden="false">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h2 class="modal-title text-muted" id="instructionTitle">INSTRUCTION</h2>
@@ -363,6 +359,44 @@
 	    </div>
 	  </div>
 	</div>
+
+	<div class="modal fade" id="quizModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            	<h4 class="modal-title text-muted" id="quizModalTitle"></h4>
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                
+                <form role="form">
+                  <div class="form-group">
+                  	<p class="text-muted" id="quizQuestion"></p>
+                    <!-- <label for="quizQuestion"></label> -->
+                      <input type="text" class="form-control" id="quizAns" value="" placeholder="Enter Your Answer..."/>
+                  </div>
+                </form>                
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+            	<span class="text-muted pull-left" id="cdTimer"></span>
+                <button type="submit" class="btn btn-default" id="submitBtn" data-dismiss="modal" onclick="compareAns()">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

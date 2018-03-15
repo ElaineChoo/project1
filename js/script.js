@@ -1,192 +1,5 @@
 //display modal on first load
-// window.addEventListener('load', function () {
-// 	document.getElementById('instruction').modal('show');
-// });
-
-//countdown timer
-function countDownTimer(){
-	var downloadTimer = setInterval(function(){
-    	//timer will deduct every sec
-    	timer--;
-    	//display on browser
-    	document.getElementById("timer").textContent = timer;
-    	//when timer reaches 0sec, stop timer
-    	if(timer <= 0) {
-    		clearInterval(downloadTimer);
-    	}
-    //update timer every second
-},1000);
-}
-// countDownTimer();
-
-
-
-//quiz for Chance Card
-var num1 = 0;
-var num2 = 0;
-var ops = [];
-var mathTotal = 0;
-var operator="";
-var chanceAns="";
-
-function mathQuiz() {
-	num1 = Math.floor((Math.random()*11)+1);
-	num2 = Math.floor((Math.random()*11)+1);
-
-
-	ops=['+','-','*'];
-
-	//random operator
-	var opindex = Math.floor(Math.random()*3);
-	console.log(opindex);
-	operator = ops[opindex];
-
-	//calculate the expected result:
-
-	switch (opindex){
-
-		case 0: 
-		mathTotal=num1+num2;
-		chanceAns = prompt(num1 + " + " + num2 + " = ?" + "\n" + "\n" + "Input your answer below: ");
-		break;
-
-		case 1:
-		mathTotal=num1-num2;
-		chanceAns = prompt(num1 + " - " + num2 + " = ?" + "\n" + "\n" + "Input your answer below: ");
-		break;
-
-		case 2:
-		mathTotal=num1*num2;
-		chanceAns = prompt(num1 + " * " + num2 + " = ?" + "\n" + "\n" + "Input your answer below: ");
-		break;
-	}
-	console.log("going to compare math answer");
-	compareMathAns (chanceAns);
-}
-
-// mathQuiz();
-// console.log(`num1: ${num1} ops:${operator} num2: ${num2} = mathTotal: ${mathTotal}`);
-// console.log(chanceAns);
-
-//comparing the input answer and the correct answer
-function compareMathAns (chanceAns) {
-	document.getElementById("instructBtn").disabled = false;
-	document.getElementById("rollDice").disabled = false;
-	//console.log("just in the compare math ans if else");
-	//if answer is correct, add score
-	if (chanceAns == mathTotal) {
-		alertMsg.innerText = "CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.";
-		p1Score += 100;
-		document.getElementById("p1Score").innerText = p1Score;
-	}
-	//if answer is wrong, deduct score
-	else {
-		//console.log("just in the else of compare math ans");
-		alertMsg.innerText = "AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.";
-		p1Score -= 100;
-		//console.log('deducted score');
-		document.getElementById("p1Score").innerText = p1Score;
-		//console.log('display score on UI');
-	}
-}
-
-// compareMathAns(chanceAns);
-// console.log(p1Score);
-
-
-
-//object for Community Chest quiz
-var comChestQuiz = [
-{
-	question:"Which is the animal referred as the ship of the desert?",
-	option: ["A: Horse", "B: Reindeer", "C: Camel", "D: Elephant"],
-	answer: "C"
-},
-{
-	question:"Which is the fastest animal on land?",
-	option: ["A: Cheetah", "B: Jaguar", "C: Panther", "D: Leopard"],
-	answer: "A"
-},
-{
-	question:"Objects at the surface of water can be viewed from a submarine under water by using...",
-	option: ["A: Stethescope", "B: Periscope", "C: Kaleidoscope", "D: Telescope"],
-	answer: "B"
-},
-{
-	question:"At room temperature, which is the only metal that is in liquid form?",
-	option:["A: Iron", "B: Aluminum", "C: Mecury", "D: Silver"],
-	answer: "C"
-},
-{
-	question:"Which id the country which has Great Barrier Reef?",
-	option:["A: London", "B: Australia", "C: Ireland", "D: New Zealand"],
-	answer: "B"
-},
-{
-	question:"Which country has a maple leaf on their national flag?",
-	option:["A: Canada", "B: Japan", "C: Switzerland", "D: Brazil"],
-	answer:"A"
-},
-{
-	question:"How many continents are there on Earth?",
-	option:["A: 5", "B: 6", "C: 7", "D: 8"],
-	answer:"C"
-},
-{
-	question:"Which is the world's longest river?",
-	option:["A: The Amazon River", "B: The Yangtze River", "C: The Mississippi", "D: The Yellow River"],
-	answer:"A"
-},
-{
-	question:"Who invented Electric Bulb?",
-	option:["A: Albert Einstein", "B: Thomas Edison", "C: Leonardo da Vinci", "D: Isaac Newton"],
-	answer:"B"
-},
-{
-	question:"Who made the first successful aeroplane?",
-	option:["A: Charles Babbage", "B: Alexandra Graham Bell", "C: Wright Brothers", "D: Guglielmo Marconi"],
-	answer:"C"
-}
-];
-
-//randomise Community Chest Quiz
-var comChestAns ="";
-var questionIndex = 0;
-function gkQuestion () {
-	questionIndex = Math.floor(Math.random()*comChestQuiz.length);
-
-	//pop up the randomised question & selection in prompt for player to answer
-	comChestAns = prompt(comChestQuiz[questionIndex]["question"] + "\n" + comChestQuiz[questionIndex]["option"].join("\n") + "\n" + "\n"+ "Input anwer 'A', 'B', 'C' or 'D'.");
-
-	//console.log(questionIndex);
-	compareGKAns(comChestAns);
-}
-// gkQuestion();
-// console.log(comChestAns);
-
-//compare the input answer and correct answer
-function compareGKAns (comChestAns){
-	document.getElementById("instructBtn").disabled = false;
-	document.getElementById("rollDice").disabled = false;
-	var comChestAnsUC = comChestAns.toUpperCase();
-
-	//if answer is correct, add score
-	if (comChestAnsUC === comChestQuiz[questionIndex]["answer"]){
-		alertMsg.innerText = "CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.";
-		p1Score += 100;
-		document.getElementById("p1Score").innerText = p1Score;
-	}
-	//if answer is wrong, minus score
-	else {
-		alertMsg.innerText = "AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.";
-		p1Score -= 100;
-		document.getElementById("p1Score").innerText = p1Score;
-	}
-}
-
-// compareGKAns(comChestAns);
-// console.log(p1Score);
-
+$('#instruction').modal('show');
 
 // ------------------------------------------------------------------------------------------------------------------------------
 //Initialising Game
@@ -209,10 +22,15 @@ document.getElementById("p1Score").innerText = p1Score;
 
 //default token location (aka start point)
 var tokenLocation = 0;
+var tokenCurrentPos;
+var onToken = document.getElementById(tokenCurrentPos);
+
+//counter for number of rounds that player made
+var count = 0;
 
 //default amount of time given
-var timer = 30;
-document.getElementById("timer").innerText = timer;
+var timer = 15;
+//document.getElementById("cdTimer").innerText = timer;
 
 //toggle timer appearance:
 var toggleTimer = document.getElementById('timerClock');
@@ -220,8 +38,21 @@ var toggleTimer = document.getElementById('timerClock');
 //output alert message
 var alertMsg = document.getElementById("message");
 
+//var for math quiz
+var num1 = 0;
+var num2 = 0;
+var ops = [];
+var mathTotal = 0;
+var operator="";
+var chanceAns="";
+
+//var for general knowledge quiz
+var comChestAns ="";
+var questionIndex = 0;
+
 //edited string
 var displayStr = "";
+
 function editString() {
 	var splitStr = tokenCurrentPos.split("-");
 	if (splitStr[0].includes("_")){
@@ -234,7 +65,6 @@ function editString() {
 		console.log("w/o '_' : " + displayStr);
 	}
 }
-
 
 //function to hide all player1 token
 function hideAllToken(){
@@ -249,9 +79,7 @@ function hideAllToken(){
 	}
 }
 
-var tokenCurrentPos;
-var onToken = document.getElementById(tokenCurrentPos);
-
+//display token at position it is supposed to be at
 function displayToken(){
 
 	tokenCurrentPos = board[tokenLocation];
@@ -267,11 +95,10 @@ function displayToken(){
 	document.getElementById("comChestCard").disabled = true;
 	
 	//display token
-	// var el = document.querySelector('div'),
 	onToken.style.opacity = 0;
 	requestAnimationFrame(function() {
-	    onToken.style.transition = 'opacity 1s';
-	    onToken.style.opacity = 1;
+		onToken.style.transition = 'opacity 1s';
+		onToken.style.opacity = 1;
 	});
 }
 
@@ -309,11 +136,9 @@ function diceNumber () {
 	tokenPosition();
 }
 
-var count = 0;
-
 function tokenPosition() {
-	var rollDiceA = parseInt (document.getElementById("diceA").innerText);
-	var rollDiceB = parseInt (document.getElementById("diceB").innerText);
+	var rollDiceA = 6 //parseInt (document.getElementById("diceA").innerText);
+	var rollDiceB = 5 //parseInt (document.getElementById("diceB").innerText);
 
 	// total number of move
 	totalMove = rollDiceA + rollDiceB
@@ -321,9 +146,6 @@ function tokenPosition() {
 
 	tokenLocation += totalMove;
 
-	// console.log(rollDiceA);
-	// console.log(rollDiceB);
-	// console.log(totalMove);
 	console.log(tokenLocation);
 
 	var testNumber = tokenLocation - 35;
@@ -358,8 +180,6 @@ function tokenPosition() {
 		console.log(`go pass ${count}`);
 	}
 }
-
-
 
 //check if any deduction is required
 function deductScore() {
@@ -423,10 +243,226 @@ function quizTime () {
 		document.getElementById("instructBtn").disabled = true;
 		document.getElementById("rollDice").disabled = true;
 		alertMsg.innerText="Click on the Community Chest Card box in the middle of the board to proceed with the quiz.";
-		//document.getElementById('comChestCard').addEventListener("click", gkQuestion);
+		
+		document.getElementById('comChestCard').addEventListener("click", gkQuestion);
 	}
 	else {
 		checkScore();
+	}
+}
+
+
+//countdown timer
+function countDownTimer(){
+	var downloadTimer = setInterval(function(){
+    	//timer will deduct every sec
+    	timer--;
+    	//display on browser
+    	document.getElementById("cdTimer").textContent = timer + "sec ";
+
+    	document.getElementById("submitBtn").addEventListener("click", function(){
+    		console.log("in submitBtn addEventListener be4 clearInterval");
+    		clearInterval(downloadTimer);
+    		console.log("just after clearInterval(downloadTimer) b4 compareAns in submitBtn");
+    		compareAns();
+    		console.log("just in after compareAns in submitBtn");
+    	});
+
+    	$('#quizAns').keydown(function(e){
+    		console.log("in enter key be4 if");
+		    if(e.keyCode === 13){
+		    	console.log("in enter key be4 clearInterval in if");
+		        clearInterval(downloadTimer);
+		        console.log("just after clearInterval(downloadTimer) b4 compareAns in enter key if");
+    			compareAns();
+    			console.log("just in after compareAns in enter key if");
+		    }
+		    console.log("just in after compareAns outside if");  
+		});
+
+    	//when timer reaches 0sec, stop timer
+    	console.log("b4 timer < 0 be4 if");
+    	if(timer < 0) {
+    		console.log("in timer < 0 be4 in if");
+    		clearInterval(downloadTimer);
+    		console.log("just after clearInterval(downloadTimer) b4 compareAns in timer < 0 if");
+    		compareAns();
+    		console.log("just in after compareAns in timer < 0 if");
+
+    	}
+    //update timer every second
+    console.log("Just out of downloadTimer function");
+	},1000);
+	console.log("Just out of 1000");
+}
+
+//quiz for Chance Card
+function mathQuiz() {
+	num1 = Math.floor((Math.random()*11)+1);
+	num2 = Math.floor((Math.random()*11)+1);
+
+
+	ops=['+','-','*'];
+
+	//randomise operation
+	var opindex = Math.floor(Math.random()*3);
+	console.log(opindex);
+	operator = ops[opindex];
+
+	//insert title into Modal
+	var title = "Mathematics Quiz";
+	document.getElementById("quizModalTitle").innerText = title;
+
+	//calculate the expected result:
+	switch (opindex){
+
+		case 0: 
+		mathTotal=num1+num2;
+		document.getElementById("quizQuestion").innerText = num1 + " + " + num2 + " = ?"
+		chanceAns = prompt( + "\n" + "\n" + "Input your answer below: ");
+		break;
+
+		case 1:
+		mathTotal=num1-num2;
+		document.getElementById("quizQuestion").innerText = num1 + " - " + num2 + " = ?"
+		break;
+
+		case 2:
+		mathTotal=num1*num2;
+		document.getElementById("quizQuestion").innerText = num1 + " + " + num2 + " = ?"
+		break;
+	}
+	console.log("going to compare math answer");
+		//pop up modal
+	$('#quizModal').modal('show');
+
+	countDownTimer();
+}
+
+//comparing the input answer and the correct answer
+function compareMathAns (chanceAns) {
+	document.getElementById("instructBtn").disabled = false;
+	document.getElementById("rollDice").disabled = false;
+	//console.log("just in the compare math ans if else");
+	//if answer is correct, add score
+	if (chanceAns == mathTotal) {
+		alertMsg.innerText = "CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.";
+		p1Score += 100;
+		document.getElementById("p1Score").innerText = p1Score;
+	}
+	//if answer is wrong, deduct score
+	else {
+		//console.log("just in the else of compare math ans");
+		alertMsg.innerText = "AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.";
+		p1Score -= 100;
+		//console.log('deducted score');
+		document.getElementById("p1Score").innerText = p1Score;
+		//console.log('display score on UI');
+	}
+}
+
+//object for Community Chest quiz
+var comChestQuiz = [
+{
+	question:"Which is the animal referred as the ship of the desert?",
+	option: ["A: Horse", "B: Reindeer", "C: Camel", "D: Elephant"],
+	answer: "C"
+},
+{
+	question:"Which is the fastest animal on land?",
+	option: ["A: Cheetah", "B: Jaguar", "C: Panther", "D: Leopard"],
+	answer: "A"
+},
+{
+	question:"Objects at the surface of water can be viewed from a submarine under water by using...",
+	option: ["A: Stethescope", "B: Periscope", "C: Kaleidoscope", "D: Telescope"],
+	answer: "B"
+},
+{
+	question:"At room temperature, which is the only metal that is in liquid form?",
+	option:["A: Iron", "B: Aluminum", "C: Mecury", "D: Silver"],
+	answer: "C"
+},
+{
+	question:"Which id the country which has Great Barrier Reef?",
+	option:["A: London", "B: Australia", "C: Ireland", "D: New Zealand"],
+	answer: "B"
+},
+{
+	question:"Which country has a maple leaf on their national flag?",
+	option:["A: Canada", "B: Japan", "C: Switzerland", "D: Brazil"],
+	answer:"A"
+},
+{
+	question:"How many continents are there on Earth?",
+	option:["A: 5", "B: 6", "C: 7", "D: 8"],
+	answer:"C"
+},
+{
+	question:"Which is the world's longest river?",
+	option:["A: The Amazon River", "B: The Yangtze River", "C: The Mississippi", "D: The Yellow River"],
+	answer:"A"
+},
+{
+	question:"Who invented Electric Bulb?",
+	option:["A: Albert Einstein", "B: Thomas Edison", "C: Leonardo da Vinci", "D: Isaac Newton"],
+	answer:"B"
+},
+{
+	question:"Who made the first successful aeroplane?",
+	option:["A: Charles Babbage", "B: Alexandra Graham Bell", "C: Wright Brothers", "D: Guglielmo Marconi"],
+	answer:"C"
+}
+];
+
+//randomise Community Chest Quiz
+function gkQuestion () {
+	questionIndex = Math.floor(Math.random()*comChestQuiz.length);
+
+	//insert title into Modal
+	var title = "General Knowledge Quiz";
+	document.getElementById("quizModalTitle").innerText = title;
+
+	//randomise question
+	var randomGKQues = comChestQuiz[questionIndex]["question"] + "\n" + comChestQuiz[questionIndex]["option"].join("\n") + "\n" + "Enter A, B, C or D";
+	
+	//insert randomise question into modal
+	document.getElementById("quizQuestion").innerText = randomGKQues;
+
+	//pop up modal
+	$('#quizModal').modal('show');
+
+	countDownTimer();
+}
+
+//compare the input answer and correct answer
+function compareGKAns (){
+	comChestAns = $("#quizAns").val();
+	console.log(comChestAns);
+	document.getElementById("instructBtn").disabled = false;
+	document.getElementById("rollDice").disabled = false;
+	var comChestAnsUC = comChestAns.toUpperCase();
+
+	//if answer is correct, add score
+	if (comChestAnsUC === comChestQuiz[questionIndex]["answer"]){
+		alertMsg.innerText = "CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.";
+		p1Score += 100;
+		document.getElementById("p1Score").innerText = p1Score;
+	}
+	//if answer is wrong, minus score
+	else {
+		alertMsg.innerText = "AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.";
+		p1Score -= 100;
+		document.getElementById("p1Score").innerText = p1Score;
+	}
+}
+
+function compareAns() {
+	if (tokenCurrentPos.includes('comChest')) {
+		compareGKAns();	
+	}
+	else if (tokenCurrentPos.includes('chance')){
+		compareMathAns();
 	}
 }
 
@@ -437,21 +473,28 @@ function checkScore() {
 	}
 	else if (count === 3) {
 		if (p1Score > 0) {
-		document.getElementById("rollDice").disabled = true;
+			document.getElementById("rollDice").disabled = true;
 			alertMsg.innerText = "CONGRATS!!! You manage to SURVIVE in SINGAPORE with $" + p1Score + "." + "\n" + "Do play again by refershing the page.";
 		}
 		else {
-		document.getElementById("rollDice").disabled = true;
+			document.getElementById("rollDice").disabled = true;
 			alertMsg.innerText = "OHHHHHH.... You almost manage to survive..... "+ "\n" + "Do Try Again by refreshing the page!!!";
 		}
 	}
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+	$("body").keydown((e) => {
+		if (e.keyCode === 13) {
+			e.preventDefault();
+			if (($("#quizModal").data('bs.modal') || {})._isShown) {
+				$("#quizModal").modal("hide");
+				console.log("b4 going to compare ans")
+				compareAns();
+			}
+		}
+	});
 
-    //hide timer
-    toggleTimer.style.visibility = 'hidden';
-    
     //display token at start point
     displayToken();
 

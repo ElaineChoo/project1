@@ -192,7 +192,7 @@ function compareGKAns (comChestAns){
 //Initialising Game
 
 //board sequence
-var board = ["go", "comChest1", "tampines-free", "income", "epay-payaLebar", "serangoon-free", "chance1", "littleIndia-free", "pay-roadTax", "justVisitJail-free", "pay-electrical", "comChest2", "orchard-free", "epay-dhobyGhaut", "cityHall-free", "chance2", "pay-petrolStn", "rafflesPlace-free", "freeParking", "marinaBay-free", "chance3", "pay-insurance", "outramPark-free", "epay-harbourFront", "pay-waterWorks", "bounaVista-free", "comChest3", "goToJail", "bishan-free", "pay-creditCard", "comChest4", "woodlands-free", "epay-cck", "chance4", "jurongEast-free", "luxury"];
+var board = ["go", "comChest1", "Tampines-free", "income", "epay-payaLebar", "Serangoon-free", "chance1", "Little_India-free", "pay-roadTax", "Just_Visiting_Jail-free", "pay-electrical", "comChest2", "Orchard-free", "epay-dhobyGhaut", "City_Hall-free", "chance2", "pay-petrolStn", "Raffles_Place-free", "Free_Parking-free", "Marina_Bay-free", "chance3", "pay-insurance", "Outram_Park-free", "epay-harbourFront", "pay-waterWorks", "Bouna_Vista-free", "comChest3", "goToJail", "Bishan-free", "pay-creditCard", "comChest4", "Woodlands-free", "epay-cck", "chance4", "Jurong_East-free", "luxury"];
 // console.log(`board: ${board}`);
 
 //var for dice A, dice B and total move
@@ -220,6 +220,20 @@ var toggleTimer = document.getElementById('timerClock');
 //output alert message
 var alertMsg = document.getElementById("message");
 
+//edited string
+var displayStr = "";
+function editString() {
+	var splitStr = tokenCurrentPos.split("-");
+	if (splitStr[0].includes("_")){
+		var dblSplitStr = splitStr[0].split("_");
+		displayStr = dblSplitStr.join(" ");
+		console.log("with '_' : " + displayStr);
+	}
+	else {
+		displayStr = splitStr[0];
+		console.log("w/o '_' : " + displayStr);
+	}
+}
 
 
 //function to hide all player1 token
@@ -340,7 +354,6 @@ function tokenPosition() {
 		count++;
 		checkScore();
 		p1Score += 200;
-		alertMsg.innerText = "CONGRATS!! You have pass 'GO'. $200 has been credited to your account."
 		document.getElementById("p1Score").innerText = p1Score;
 		console.log(`go pass ${count}`);
 	}
@@ -351,7 +364,8 @@ function tokenPosition() {
 //check if any deduction is required
 function deductScore() {
 	if (tokenCurrentPos.includes('free')) {
-		alertMsg.innerText = "You are currently at " + tokenCurrentPos + ".";
+		editString();
+		alertMsg.innerText = "You are currently at " + displayStr + ".";
 	}
 	else if	(tokenCurrentPos.includes('income')) {
 		p1Score -= 200;

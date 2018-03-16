@@ -44,11 +44,14 @@ var num2 = 0;
 var ops = [];
 var mathTotal = 0;
 var operator="";
-var chanceAns="";
+var chanceAns=0;
 
 //var for general knowledge quiz
 var comChestAns ="";
 var questionIndex = 0;
+
+//empty str
+var emptyStr = "";
 
 //edited string
 var displayStr = "";
@@ -137,8 +140,8 @@ function diceNumber () {
 }
 
 function tokenPosition() {
-	var rollDiceA = 6 //parseInt (document.getElementById("diceA").innerText);
-	var rollDiceB = 5 //parseInt (document.getElementById("diceB").innerText);
+	var rollDiceA = parseInt (document.getElementById("diceA").innerText);
+	var rollDiceB = parseInt (document.getElementById("diceB").innerText);
 
 	// total number of move
 	totalMove = rollDiceA + rollDiceB
@@ -234,14 +237,16 @@ function quizTime () {
 		document.getElementById("chanceCard").disabled = false;
 		document.getElementById("instructBtn").disabled = true;
 		document.getElementById("rollDice").disabled = true;
+
 		alertMsg.innerText = "Click on the Chance Card box in the middle of the board to proceed with the quiz.";
 
-		//document.getElementById('chanceCard').addEventListener("click", mathQuiz);
+		document.getElementById('chanceCard').addEventListener("click", mathQuiz);
 	}
 	else if (tokenCurrentPos.includes('comChest')) {
 		document.getElementById("comChestCard").disabled = false;
 		document.getElementById("instructBtn").disabled = true;
 		document.getElementById("rollDice").disabled = true;
+
 		alertMsg.innerText="Click on the Community Chest Card box in the middle of the board to proceed with the quiz.";
 		
 		document.getElementById('comChestCard').addEventListener("click", gkQuestion);
@@ -254,31 +259,32 @@ function quizTime () {
 
 //countdown timer
 function countDownTimer(){
+	timer = 15;
 	var downloadTimer = setInterval(function(){
     	//timer will deduct every sec
     	timer--;
     	//display on browser
     	document.getElementById("cdTimer").textContent = timer + "sec ";
 
-    	document.getElementById("submitBtn").addEventListener("click", function(){
-    		console.log("in submitBtn addEventListener be4 clearInterval");
-    		clearInterval(downloadTimer);
-    		console.log("just after clearInterval(downloadTimer) b4 compareAns in submitBtn");
-    		compareAns();
-    		console.log("just in after compareAns in submitBtn");
-    	});
+  //   	document.getElementById("submitBtn").addEventListener("click", function(){
+  //   		console.log("in submitBtn addEventListener be4 clearInterval");
+  //   		clearInterval(downloadTimer);
+  //   		console.log("just after clearInterval(downloadTimer) b4 compareAns in submitBtn");
+  //   		compareAns();
+  //   		console.log("just in after compareAns in submitBtn");
+  //   	});
 
-    	$('#quizAns').keydown(function(e){
-    		console.log("in enter key be4 if");
-		    if(e.keyCode === 13){
-		    	console.log("in enter key be4 clearInterval in if");
-		        clearInterval(downloadTimer);
-		        console.log("just after clearInterval(downloadTimer) b4 compareAns in enter key if");
-    			compareAns();
-    			console.log("just in after compareAns in enter key if");
-		    }
-		    console.log("just in after compareAns outside if");  
-		});
+  //   	$('#quizAns').keydown(function(e){
+  //   		console.log("in enter key be4 if");
+		//     if(e.keyCode === 13){
+		//     	console.log("in enter key be4 clearInterval in if");
+		//         clearInterval(downloadTimer);
+		//         console.log("just after clearInterval(downloadTimer) b4 compareAns in enter key if");
+  //   			compareAns();
+  //   			console.log("just in after compareAns in enter key if");
+		//     }
+		//     console.log("just in after compareAns outside if");  
+		// });
 
     	//when timer reaches 0sec, stop timer
     	console.log("b4 timer < 0 be4 if");
@@ -319,7 +325,6 @@ function mathQuiz() {
 		case 0: 
 		mathTotal=num1+num2;
 		document.getElementById("quizQuestion").innerText = num1 + " + " + num2 + " = ?"
-		chanceAns = prompt( + "\n" + "\n" + "Input your answer below: ");
 		break;
 
 		case 1:
@@ -332,7 +337,7 @@ function mathQuiz() {
 		document.getElementById("quizQuestion").innerText = num1 + " + " + num2 + " = ?"
 		break;
 	}
-	console.log("going to compare math answer");
+	// $("#quizAns").val() = emptyStr;
 		//pop up modal
 	$('#quizModal').modal('show');
 
@@ -341,9 +346,9 @@ function mathQuiz() {
 
 //comparing the input answer and the correct answer
 function compareMathAns (chanceAns) {
+	chanceAns = $("#quizAns").val();
 	document.getElementById("instructBtn").disabled = false;
 	document.getElementById("rollDice").disabled = false;
-	//console.log("just in the compare math ans if else");
 	//if answer is correct, add score
 	if (chanceAns == mathTotal) {
 		alertMsg.innerText = "CONGRATS!! Your answer is correct. $100 is credited to your account." + "\n" + "Click on 'Roll the Dice' to continue.";
@@ -352,12 +357,9 @@ function compareMathAns (chanceAns) {
 	}
 	//if answer is wrong, deduct score
 	else {
-		//console.log("just in the else of compare math ans");
 		alertMsg.innerText = "AWWww... You have gotten the answer wrong.... Try harder next time.." + "\n" + "$100 is deducted from your account!" + "\n" + "Click on 'Roll the Dice' to continue.";
 		p1Score -= 100;
-		//console.log('deducted score');
 		document.getElementById("p1Score").innerText = p1Score;
-		//console.log('display score on UI');
 	}
 }
 
@@ -429,6 +431,8 @@ function gkQuestion () {
 	//insert randomise question into modal
 	document.getElementById("quizQuestion").innerText = randomGKQues;
 
+	//$("#quizAns").val() = emptyStr;
+
 	//pop up modal
 	$('#quizModal').modal('show');
 
@@ -474,7 +478,7 @@ function checkScore() {
 	else if (count === 3) {
 		if (p1Score > 0) {
 			document.getElementById("rollDice").disabled = true;
-			alertMsg.innerText = "CONGRATS!!! You manage to SURVIVE in SINGAPORE with $" + p1Score + "." + "\n" + "Do play again by refershing the page.";
+			alertMsg.innerText = "CONGRATS!!! You manage to SURVIVE in SINGAPORE with $" + p1Score + "left." + "\n" + "Do play again by refershing the page.";
 		}
 		else {
 			document.getElementById("rollDice").disabled = true;

@@ -97,7 +97,7 @@
 					<!-- Middle Block -->
 					<div class="col-8 mt-2">
 						<div class="d-flex m-0">
-							<div class="mx-auto my-2 p-3"><button type="button" id="chanceCard" onclick="mathQuiz()"><h3 class ="mb-0 p-5">Chance</h3></button></div>
+							<div class="mx-auto my-2 p-3"><button class="btn btn-lg" id="chanceCard" data-toggle="modal" data-target="#quizModal"><h3 class ="mb-0 p-5">Chance</h3></button></div>
 						</div>
 					</div>
 
@@ -381,7 +381,7 @@
                   <div class="form-group">
                   	<p class="text-muted" id="quizQuestion"></p>
                     <!-- <label for="quizQuestion"></label> -->
-                      <input type="text" class="form-control" id="quizAns" value="" placeholder="Enter Your Answer..."/>
+                      <input type="text" class="form-control" id="quizAns" value=" " onfocus="this.value=''" placeholder="Enter Your Answer..."/>
                   </div>
                 </form>                
             </div>

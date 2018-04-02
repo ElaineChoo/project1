@@ -2,6 +2,8 @@
 Project 1: Singapore Life "Adventure"
 https://elainechoo.github.io/project1/
 
+![Overview] (/img/project overview.PNG)
+
 # OBJECT
 The object of the game is to be able to survive traveling around the board 3 times.
 
